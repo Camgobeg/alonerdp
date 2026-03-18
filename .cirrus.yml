@@ -4,13 +4,4 @@ container:
 tmate_ssh_task:
   timeout_in: 120m # Ücretsiz planda 2 saat limitin var
   install_script:
-    - apt-get update && apt-get install -y tmate curl git
-  run_script:
-    # tmate arka planda başlatılıyor
-    - tmate -S /tmp/tmate.sock new-session -d
-    # Bağlantı kurulana kadar bekleme komutu (loglarda linki görebilmen için)
-    - tmate -S /tmp/tmate.sock wait-for-connection
-    # SSH adresini ekrana yazdır (Bunu kopyalayacaksın)
-    - tmate -S /tmp/tmate.sock display -p "SSH komutu budur abi -> #{tmate_ssh}"
-    # Bağlantı kopsa bile makinenin hemen kapanmaması için bir döngü
-    - sleep 7200
+    - df -h
